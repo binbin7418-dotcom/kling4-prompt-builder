@@ -1,0 +1,16 @@
+# Kling 4.0 Storyboard Prompt Builder
+
+> A free prompt builder for Kling 4.0, Kuaishou's video model (Flash opened September 28, 2026; full model October 15, 2026). Kling's official prompt structure is: asset roles, global settings, timed beats, audio. Kling 4.0 generates clips of 3-30 seconds, supports up to 10 keyframes or up to 15 Omni Reference assets (never both in one generation), prompts up to 8,000 tokens, and native multilingual dialogue.
+
+## Key facts
+- The only negative instructions Kling recommends are "no subtitles" and "no background music"; other negatives can increase errors.
+- In Keyframes mode, prompt text should describe transitions between frames, not the frames themselves.
+- One speaker and one short line per beat keeps native dialogue lip-sync clean.
+
+## Pages
+- [Storyboard prompt builder](https://binbin7418-dotcom.github.io/kling4-prompt-builder/): interactive builder with duration checking, rules table and a worked example.
+
+## Paid product
+- Kling 4.0 Director's Pack ($9.99, Gumroad): 40 production storyboard templates (product ads, dialogue scenes, keyframe reveals, social hooks, real estate and travel, explainers) with modes, beat timings and audio lines written out. https://binbinster.gumroad.com/l/kling4-directors-pack
+
+Not affiliated with Kuaishou or Kling AI.
