@@ -1,0 +1,25 @@
+# Kling 4.0 — prompting reference (checked November 4, 2026)
+
+## Release and capabilities
+Kling 4.0 is Kuaishou's video generation model. Flash opened September 28, 2026 (Ultra Yearly subscribers); the full model followed October 15, 2026. Capabilities: 3-30 second clips, up to 10 keyframes, Omni Reference with up to 15 mixed assets (images, videos, voice profiles, elements), prompts up to 8,000 tokens, native multilingual dialogue, 720p/1080p/4K output.
+
+## Official prompt structure
+1. Asset roles - state what each reference controls ("@Image1 is the product").
+2. Global settings - scene and texture, visual style, camera tone.
+3. Timed beats - a sequence of events with timings ("0 to 8 s: she walks toward camera").
+4. Audio - ambience, dialogue lines, music or its absence.
+
+## Hard rules
+- Keyframes and Omni Reference cannot be combined in one generation.
+- Describe what you want, not what you do not want; negative instructions can increase errors. The two recommended negatives are "no subtitles" and "no background music".
+- Start short (subject, scene, action, emotion in one sentence), then add camera, timing, audio and what must be preserved.
+- For a style change, add exclusions (e.g. exclude photorealism for animation) so styles do not mix.
+
+## Worked example (15-second product reveal)
+@Image1 is the product on a clean surface. Premium studio look, soft side light, fine matte grain, shallow depth of field. 0 to 4 s: a light sweep reveals the silhouette. 4 to 9 s: camera slides in, label catches the light. 9 to 13 s: a hand lifts and turns the product. 13 to 15 s: hero hold. Audio: quiet room tone, one soft click. No background music. No subtitles.
+
+## Tools and templates
+- Free builder: https://binbin7418-dotcom.github.io/kling4-prompt-builder/
+- Kling 4.0 Director's Pack, $9.99 one-time: 40 production templates in the official structure. https://binbinster.gumroad.com/l/kling4-directors-pack
+
+Not affiliated with Kuaishou or Kling AI.
