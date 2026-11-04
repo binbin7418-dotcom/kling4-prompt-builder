@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Write a Kling 4.0 Prompt — Asset Roles, Beats & Audio, Step by Step</title>
+<meta name="description" content="A step-by-step guide to Kling 4.0's official prompt structure: pick Keyframes or Omni Reference, name asset roles, write global settings, lay out timed beats inside 30 seconds and finish with the audio line.">
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1a1a1a;background:#fafafa;line-height:1.55;font-variant-numeric:tabular-nums}
+.wrap{max-width:880px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:29px;line-height:1.2;margin:8px 0}h2{margin-top:36px;font-size:21px}
+.card{background:#fff;border:1px solid #e3e3e3;border-radius:12px;padding:20px;margin:16px 0}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px}
+select,input{width:100%;padding:8px;border:1px solid #ccc;border-radius:8px;font-size:15px;box-sizing:border-box}
+textarea{width:100%;min-height:152px;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:15px;box-sizing:border-box}
+.btn{display:inline-block;background:#111;color:#fff;padding:12px 16px;border-radius:8px;text-decoration:none;font-weight:600;border:0;cursor:pointer;font-size:15px}
+.small{font-size:13px;color:#555}.warn{color:#b00020;font-weight:600}.ok{color:#157347;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #e7e7e7;padding:8px 4px;text-align:left}
+.beat{display:grid;grid-template-columns:70px 70px 1fr 36px;gap:8px;margin:8px 0}
+details{margin:12px 0}summary{font-weight:600;cursor:pointer}
+
+b,strong{font-weight:600}
+.band{background:#111;color:#f2f2f2;border-radius:12px;padding:20px;margin:16px 0}
+.band .small{color:#bbb}
+.chip{display:inline-block;border:1px solid #bbb;border-radius:999px;padding:4px 12px;margin:0 8px 8px 0;font-size:13px;font-weight:600}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does Kling cut off my last beat?","acceptedAnswer":{"@type":"Answer","text":"Because the beats ran past the clip length you selected, or the last beat's action and dialogue need more seconds than it was given. Sum your beat end-times, keep the total inside the generation length (max 30s), and budget dialogue at roughly 2.5 spoken words per second."}},{"@type":"Question","name":"Should I write my Kling 4.0 prompt as one paragraph?","acceptedAnswer":{"@type":"Answer","text":"No - structure beats prose. Kling's official 4.0 structure is asset roles, then global settings, then timed beats, then an audio line. A single flowing paragraph buries the timing information the model uses to pace the clip."}},{"@type":"Question","name":"What if my scene needs both keyframes and references?","acceptedAnswer":{"@type":"Answer","text":"Split it into two generations. Keyframes and Omni Reference cannot be combined in one Kling 4.0 generation, so render the keyframed segment and the referenced segment separately and join them in editing."}}]}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4XL64FEB3G"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-4XL64FEB3G');
+</script>
+</head>
+<body>
+<div class="wrap">
+<h1>How to Write a Kling 4.0 Prompt in Five Steps</h1>
+<p>Kling's official 4.0 structure has four parts — asset roles, global settings, timed beats, audio — plus one decision before all of them: the mode. The steps below follow that order. The <a href="index.html">free builder</a> assembles the prompt and checks your timings; this page explains the reasoning. Finished outlines by job are on the <a href="use-cases.html">use cases page</a>.</p>
+
+<h2>Step 1 — Pick the mode: Keyframes or Omni Reference</h2>
+<div class="card">
+<p>They cannot be combined in one generation, so choose first. <b>Keyframes</b> (up to 10 images) when specific moments must look exactly like your images — product reveals, entrances, before/afters. <b>Omni Reference</b> (up to 15 assets: images, video, voice, elements) when identity and style must stay consistent through a freer scene. If a project needs both, plan two generations and join them in editing.</p>
+</div>
+
+<h2>Step 2 — Name every asset's role</h2>
+<div class="card">
+<p>One line per asset, saying what it controls: “@Image1 is the product, matte black finish”, “@Image2 is the presenter, mid-30s, denim jacket”. Unnamed assets get interpreted freely — usually wrong. For a recurring character, save this block and reuse it word for word in every prompt; consistency comes from identical wording.</p>
+<p class="small">Weak: attaching a photo with no role. Strong: “@Image1 is the product on a clean surface; its label faces camera in every shot.”</p>
+</div>
+
+<h2>Step 3 — Write the global settings</h2>
+<div class="card">
+<p>One short paragraph covering scene, texture, visual style and camera tone: “Premium studio look, soft side light raking across the product edges, fine matte grain, shallow depth of field. Camera moves are slow and deliberate.” Everything not specified here gets invented per beat — and invented inconsistently.</p>
+</div>
+
+<h2>Step 4 — Lay out timed beats inside 30 seconds</h2>
+<div class="card">
+<p>Write the clip as a sequence of timed events: “0 to 4 s: …”, “4 to 9 s: …”. Three rules keep beats renderable: (1) the last beat must end at or before your clip length — max 30s; (2) one action per beat, sized honestly — a beat whose action and dialogue need 6 seconds will be cut off in a 4-second slot; (3) dialogue at speaking pace, roughly 2.5 words per second, one speaker and one short line per beat for clean lip-sync. In Keyframes mode, remember the text describes the <i>transitions</i> between pinned frames, not the frames themselves.</p>
+<p class="small">Weak: “the presenter talks about the product and then shows it”. Strong: “9 to 13 s: a hand enters, lifts the product, turns it once.”</p>
+</div>
+
+<h2>Step 5 — Finish with the audio line and the two negatives</h2>
+<div class="card">
+<p>End with one audio sentence: ambience, key sound effects, dialogue cues. Then handle Kling's defaults: the model may add subtitles and background music uninvited, and Kling's own guide recommends exactly two negatives — <b>“no subtitles”</b> and <b>“no background music”</b> (the second only if you plan to add music in editing). Beyond those two, describe what you want instead of listing what you don't; long negative lists increase errors.</p>
+</div>
+
+<h2>The assembled result</h2>
+<div class="band"><p class="small" style="white-space:pre-wrap;margin:0">@Image1 is the product on a clean surface.
+Premium studio look, soft side light raking across the product edges, fine matte grain, shallow depth of field.
+0 to 4 s: darkness, a single light sweep reveals the product silhouette. 4 to 9 s: camera slides in from the right, label catches the light. 9 to 13 s: a hand enters, lifts the product, turns it once. 13 to 15 s: hero hold, product centered, background falls to soft blur.
+Audio: quiet studio room tone, one soft click as the product is set down. No background music. No subtitles.</p>
+<p style="margin-top:16px">That is the complete format — four parts, fifteen seconds, nothing left for the model to guess. The <a href="index.html">builder</a> produces exactly this shape and warns you when a beat overflows.</p>
+</div>
+
+<h2>Skip the blank page</h2>
+<div class="card">
+<p><b>Kling 4.0 Director's Pack — $9.99</b></p>
+<p>40 production storyboard templates in the official structure: product ads, dialogue scenes, keyframe reveals, social hooks, real-estate and travel walkthroughs, explainers and service ads. Every template has its mode, beat timings that fit 30 seconds, asset roles and audio line written out — replace the brackets and render.</p>
+<p><a class="btn" href="https://binbinster.gumroad.com/l/kling4-directors-pack">Get the Director's Pack</a></p>
+<p class="small">One-time payment. Not affiliated with Kuaishou or Kling AI.</p>
+</div>
+
+<h2>FAQ</h2>
+<details><summary>Why does Kling cut off my last beat?</summary><p>Because the beats ran past the clip length you selected, or the last beat's action and dialogue need more seconds than it was given. Sum your beat end-times, keep the total inside the generation length (max 30s), and budget dialogue at roughly 2.5 spoken words per second.</p></details>
+<details><summary>Should I write my Kling 4.0 prompt as one paragraph?</summary><p>No — structure beats prose. Kling's official 4.0 structure is asset roles, then global settings, then timed beats, then an audio line. A single flowing paragraph buries the timing information the model uses to pace the clip.</p></details>
+<details><summary>What if my scene needs both keyframes and references?</summary><p>Split it into two generations. Keyframes and Omni Reference cannot be combined in one Kling 4.0 generation, so render the keyframed segment and the referenced segment separately and join them in editing.</p></details>
+
+<p class="small" style="margin-top:40px">Independent tool, not affiliated with Kuaishou or Kling AI. Feature facts checked against Kling's published 4.0 guide, November 4, 2026.</p>
+<nav style="margin-top:32px;text-align:center"><a class="btn" href="index.html">Prompt Builder</a> <a class="btn" href="use-cases.html">Use Cases</a> <a class="btn" href="how-to.html">How To</a></nav>
+</div>
+</body>
+</html>
